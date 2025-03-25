@@ -1,4 +1,4 @@
-trigger opportunityTrigger on Opportunity (before update, before delete) {
+trigger OpportunityTrigger on Opportunity (before update, before delete) {
     switch on Trigger.operationType {
         when  BEFORE_UPDATE {
             /* Question 5
