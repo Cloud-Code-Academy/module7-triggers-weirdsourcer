@@ -58,13 +58,16 @@ public with sharing class OpportunityTriggerHelper {
                             WHERE AccountId = :accid AND Title = 'CEO' WITH USER_MODE]) {
             accIdToConMap.put(con.AccountId, con);
                             }
-            
+         
 
        // Map<Id, Id>
 
         for (Opportunity opp : triggerDotNew) {
             Contact con = accIdToConMap.get(opp.AccountId);
+            if (con != null) {
                 opp.Primary_Contact__c = con.Id;
+            }
+
         }
     }
 }

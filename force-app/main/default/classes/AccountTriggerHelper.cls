@@ -60,7 +60,10 @@ public with sharing class AccountTriggerHelper {
             con.AccountId = acc.Id;
             conToInsert.add(con);
         }
-        Database.insert(conToInsert, AccessLevel.SYSTEM_MODE);
+        Database.DMLOptions dmo = new Database.DMLOptions();
+        dmo.DuplicateRuleHeader.AllowSave = true;
+        dmo.DuplicateRuleHeader.RunAsCurrentUser = false;
+        Database.insert(conToInsert, dmo, AccessLevel.SYSTEM_MODE);
     }
 
 }
